@@ -1,0 +1,57 @@
+/* 
+This is a comment
+It can be multiline
+*/
+
+/* Or single line */
+
+/* selectors {
+  property: value;
+  property: value;
+}
+ */
+/* p {
+  color: red;
+  font-size: 24px;
+} */
+
+/* Type selector */
+
+p {
+  color: red;
+  margin: 10px;
+}
+
+/* Class selector */
+.box {
+  width: 300px;
+  height: 300px;
+}
+
+.red-bg {
+  background-color: red;
+}
+.green-bg {
+  background-color: green;
+}
+.blue-bg {
+  background-color: blue;
+}
+
+/* ID selector */
+
+#main {
+  background-color: blanchedalmond;
+}
+
+.colors {
+  /* by name */
+  background-color: red;
+  /* HEX code */
+  background-color: #ff0000;
+  background-color: #f00;
+  /* rgb */
+  background-color: rgb(255, 0, 0);
+  /* rgb with opacity */
+  background-color: rgb(255, 0, 0, 0.8);
+}
