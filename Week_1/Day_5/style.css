@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Direct descendant selector */
+
+#menu > li {
+  font-size: 60px;
+}
+
+/* Descendant selector */
+#menu li {
+  color: red;
+}
+
+/* multiple */
+h1,
+p,
+h6,
+section,
+#menu > p {
+  color: blue;
+}
+/* 
+Don't. plz
+#menu > div > .myDiv > main > p > span {
+  color: blue;
+}
+ */
+#lorem {
+  color: white;
+}
+
+#box {
+  width: 500px;
+  height: 500px;
+  background-color: darkorchid;
+
+  /* border */
+  /* 
+  border - width
+  border-style
+  border-size
+  */
+  /* aplly to all sides */
+  /* border-width: 10px; */
+
+  /* aplly vertically/horizontally */
+  /*   border-width: 10px 30px; */
+
+  /* apply differently to all sides */
+  /*   border-width: 10px 50px 30px 20px;
+  border-style: solid;
+  border-color: black;
+ */
+  border: 10px solid black;
+  /* border-top: 50px solid black; */
+  /* circle: 
+  border-radius: 50%;
+   */
+
+  /* padding
+   distance between the border and the content of the box
+   */
+
+  padding: 20px;
+  padding-top: 200px;
+
+  margin: 50px;
+  margin-top: 200px;
+}
