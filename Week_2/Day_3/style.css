@@ -1,0 +1,115 @@
+html {
+  font-size: 10px;
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+}
+
+.red {
+  background-color: red;
+  /*  order: 1;
+  flex-grow: 2; */
+}
+
+.green {
+  background-color: green;
+  /* order: 2; */
+  /* justify-self: center; */
+}
+.blue {
+  background-color: blue;
+  /*  flex-grow: 1; */
+  align-self: flex-end;
+}
+.yellow {
+  background-color: yellow;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  /* flex-direction by default is row */
+  /* flex-direction: row-reverse; */
+
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.smaller-container {
+  display: flex;
+}
+
+/* Responsive lesson */
+
+.responsive {
+  width: 300px;
+  height: 300px;
+  background-color: blue;
+}
+
+@media (min-width: 1000px) {
+  /* Everything we write here will only be applied to screens with more than a 1000px in width */
+  .responsive {
+    background-color: red;
+    width: 500px;
+    height: 500px;
+  }
+
+  p {
+    color: blue;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 999px) {
+  /* This will only be applied if our screen is between 650px and 999px */
+
+  .responsive {
+    background-color: yellow;
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* responsive units:
+vw - viewport width
+vh - viewport height
+em - parent's font size
+rem -  root element (html) font size
+
+*/
+
+.units {
+  width: 50vw;
+  height: 50vh;
+  background-color: red;
+}
+
+.percent {
+  background-color: blue;
+  width: 50%;
+  height: 50%;
+}
+
+/* default font size - 16px */
+
+ul {
+  font-size: 10px;
+}
+
+li {
+  /*   font-size: 2em; 2em stand for 20px because ul has a font-size of 10px */
+  font-size: 1.6rem; /* 2rem stand for 32px because it's using the 16px of the html document */
+}
