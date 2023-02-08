@@ -1,0 +1,14 @@
+<div class='card'>
+  <div class='card-top'>
+    <img src='{{imgUrl}}' alt='{{name}}' class='card-img-top' />
+  </div>
+  <div class='card-body'>
+    <h5 class='card-title'>{{name}} <span>Nº{{id}}</span></h5>
+    <p class='card-text'>{{type}}</p>
+
+    {{#each sprites}}
+      <img src='{{this}}' alt='poke sprite' />
+    {{/each}}
+
+  </div>
+</div>
