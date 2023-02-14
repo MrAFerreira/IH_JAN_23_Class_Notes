@@ -1,0 +1,27 @@
+<h1>{{book.title}}</h1>
+<hr />
+<p>Written by: {{book.author}}</p>
+<p>Summary: {{book.description}}</p>
+<p>Rating: {{book.rating}}/10</p>
+<hr />
+
+<form action='/review/create/{{book._id}}' method='post'>
+  <select name='author' id='author'>
+    {{#each users}}
+      <option value='{{_id}}'>{{username}}</option>
+    {{/each}}
+  </select>
+
+  <textarea name='content' id='content' cols='30' rows='10'></textarea>
+  <button type='submit'>Create review</button>
+</form>
+
+<hr />
+
+{{#each book.reviews}}
+  <p>by {{this.author.username}}</p>
+  <p> {{this.content}}</p>
+
+{{/each}}
+
+<a href='/books'> Back to books</a>

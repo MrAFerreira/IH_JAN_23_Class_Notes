@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const Book = require('../models/Book.model');
+const User = require('../models/User.model');
+const Review = require('../models/Review.model');
 
 //Get All
 
@@ -80,9 +82,73 @@ router.get('/books/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
     //get a single book by id
-    const book = await Book.findById(id);
+    //Single populate
+    //const book = await Book.findById(id).populate('reviews')
+    const book = await Book.findById(id)
+      .populate('reviews author')
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'author',
+          model: 'User',
+        },
+      });
+
+    console.log(book);
     //render the view with the book
-    res.render('books/book-details', book);
+    const users = await User.find();
+
+    /*  data = {
+      book: {
+        title: ""
+      }, 
+      users:[] 
+    } */
+
+    res.render('books/book-details', { book, users });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+router.post('/review/create/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { author, content } = req.body;
+
+    //Create the review
+    const newReview = await Review.create({ author, content });
+
+    //Add the review to the user
+    await User.findByIdAndUpdate(author, { $push: { reviews: newReview._id } });
+
+    //Add the review to the book
+    await Book.findByIdAndUpdate(id, { $push: { reviews: newReview._id } });
+
+    //to pull something out of an array
+    /* await Book.findByIdAndUpdate(id, { $pull: { reviews: newReview._id } }); */
+
+    res.redirect(`/books/${id}`);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+//Example of how to delete a review and remove it from the user array:
+router.post('/review/delete/:id', async (req, res, next) => {
+  //id of the review
+  const { id } = req.params;
+
+  try {
+    const removedReview = await Review.findByIdAndRemove(id);
+
+    await User.findByIdAndUpdate(removedReview.author, {
+      $pull: { reviews: removedReview._id },
+    });
+
+    res.redirect('/book-list');
   } catch (error) {
     console.log(error);
     next(error);
